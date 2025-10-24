@@ -1,0 +1,93 @@
+---
+title: Aula 02 - Conceitos de filogenética
+date: 2025-10-24
+
+author: 
+  - name: Gabriel Rodrigues
+    degrees: 
+      - MSc
+    id: gr
+    orcid: 0009-0005-2294-2845
+    email: gvpina.rodrigues@gmail.com
+    affiliation: 
+      - name: Universidade Estadual de Santa Cruz
+        city: Ilhéus
+        state: Bahia
+        url: www.uesc.br
+
+abstract: > 
+  Resumo das aulas da disciplina "Filogenia Molecular" ministradas pelo Professor Marco Antônio Costa, da Universidade Estadual de Santa Cruz (UESC).
+keywords:
+  - Árvore Filogenética
+  - Evolução
+  - Métdos Moleculares
+
+format:
+    html:
+        toc: true
+        toc_float: true
+        self-contained: true
+---
+
+# Conceitos chave
+
+## Homoplasia
+
+Caracteres semelhantes adquiridos independentemente. Pode ser classificado como:
+
+-   **Reversão**: Exibe uma derivação de um ancestral comum menos recente, em um ramo mais anterior da árvore. Dados com muita reversão podem ser visto com estranheza;
+-   **Paralelismo**: Uma evolução em paralelo que ocorre em ramos diferentes e em momentos diferentes, mas exibem os mesmos caracteres;
+-   **Convergência**: Quando há uma pressão de seleção que levam a diferentes linhagens (que podem ser transitórias), que levam à convergência da linhagem.
+
+![Homosplasia](figures/Homoplasy.png)
+
+## Plesiomorfia
+
+Característica considerada primitiva dentro de uma linhagem evoutiva por ser semelhante ao grupo ancestral.
+
+## Apomorfia
+
+Característica considerada derivada dentro da linhagem evolutia, por ser diferente do grupo ancestral. Características mais recentes dentro da linhagem. **Sinamoporfia** é quando dois ou mais linhagens compartilham um novo caráter.
+
+**Autapomorfia** é quando uma folha ou ramo novo tem uma caracteística muito única dentro da linhagem. Espécies autapomorfas podem ser determinadas pelas distâncias maiores nos ramos.
+
+# Conceitos Evolutivos
+
+## Especiação
+
+Origem de novas linhagens a partir da linhagem ancestral, podendo ou não diferir nas características morfológicas, porém com isolamento reprodutivo. Os eventos de especiação são as bifurcações nos ramos da árvore.
+
+![Especiação](figures/speciation.png)
+
+## Filogenia
+
+Hipótese sobre as relações evolutivas entre um grupo de táxons ou OTUs.
+
+Citação vinda de AVISE (1994,2004) - "Molecular Markers, Natural History, and Evolution".
+
+> Os dados moeleculars são genéticos. Com o conhecimento da quantidade e conhecimando da variação estudada, conclusões confiáveis podem ser geitas sobre a filogenia a partir de dados moleculares. Raramente os genes e alelos que controlam determinadas características morfológicas, fisiológicas ou comportamentais utilizadas na taxonomia convencional podem ser identificados.
+
+Avise teve o trabalho de propagar a ideia de filogenia molecular para os taxonomistas e sistematas.
+
+### Classificação
+
+Categorização de entidades em grupos por uma semelhança entre as mesmas e diferenças entre os grupos.
+
+# Métodos moleculares (extra)
+
+## Eletromorfos e eletroforese
+
+Em biologia molecular, eletromorfos são variantes de enzimas ou outras proteínas que possuem a mesma função, mas que podem ser diferenciadas pela técnica de eletroforese em gel. A diferença na migração no gel é causada por variações na carga elétrica, massa ou estrutura da molécula, que geralmente resultam de mutações genéticas.
+
+Segundo o Prof. Marco Antônio, os géis utilizados nos eletromorfos eram a base de amido industrial - vindo de fornecedores industriais.
+
+## Polimorfismo de Enzimas de Restrição - PCR e RFLP
+
+**RFLP** - *Restriction fragment length polymorphism*. Endonucleases que cortam aleatoriamente as seqûencias de um gene/genoma, as diferenças nos fragmentos e nas bandas irão determinar as semelhanças e diferenças entre as amostras.
+
+## Cariótipo
+
+Observação das diferenças cromossômicas, são diferenças estruturais/quantitativas que irão determinar as distâncias entre as espécies na filogenia final. O mapeamento dos cromossomos é o input da análise. 
+
+Os eventos de divisões cromossômicas podem também interferir nas distências e proximidades entre as espécies.
+
