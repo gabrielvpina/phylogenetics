@@ -1,0 +1,3 @@
+# Fastp
+
+fastp --qualified_quality_phred 33 --in1 fastq/COC_2F.fastq --in2 fastq/COC_2R.fastq --out1 fastp/COC_2F.fastq --out2 fastp/COC_2R.fastq --n_base_limit 50  --disable_adapter_trimming
