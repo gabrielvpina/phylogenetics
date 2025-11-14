@@ -1,5 +1,5 @@
 ---
-title: Aula 02 - Conceitos de filogenética
+title: Conceitos de filogenética
 date: 2025-10-24
 
 author: 
@@ -91,3 +91,35 @@ Observação das diferenças cromossômicas, são diferenças estruturais/quanti
 
 Os eventos de divisões cromossômicas podem também interferir nas distências e proximidades entre as espécies.
 
+# Relações de Homologia, Paralogia e Ortologia
+
+Em uma relação evolutiva de genes, eventos de duplicação gênica podem ocorrer e mudar a dinâmica da análise dos genes na história evolutiva.
+
+```{mermaid}
+flowchart LR
+  A(Gene A) -- Duplicação Gênica --> AB{Gene A e B}
+  AB --> A1B1(Gene A1 e B1)
+  AB --> A2B2(Gene A2 e B2)
+  A1B1 --> A1(Gene A1)
+  A1B1 --> B1(Gene B1)
+  A2B2 --> A2(Gene A2)
+  A2B2 --> B2(Gene B2)
+```
+
+O evento de duplicação do `Gene A` gerou os genes *A* e *B*, e as espécies subsequentes carregam os genes com as seguintes relações.
+
+```{mermaid}
+flowchart LR
+  X1(Gene A1) -- Genes Ortólogos --- X2(Gene A2)
+  X1(Gene A1) -- Genes Parálogos --- Y2(Gene B2)
+
+  T1(Gene A1) -- Genes Homólogos --- T2(Gene A2)
+```
+
+Os genes `A1` e `A2` são Ortólogos, e ao mesmo tempo também são Homólogos. 
+
+# Seleção de genes para uma filogenia
+
+A escolha dos genes para a execução de uma filogenia é uma etapa fundamental para entender as relações basais na árvore filogenética final. Existem os chamados métodos de "concatenação", onde diferentes genes são concatenados para formar uma única sequência utilizada para a filogenia final.
+
+Os genes escolhidos para concatenação devem ser cuidadosamente escolhidos, pois devem possuir uma taxa de variação similar e serem bem representativos para o táxon analisado. Sequências muito conservadas podem silenciar a real variação dos genes mais distintos. 
