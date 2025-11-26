@@ -22,11 +22,21 @@ keywords:
   - Evolução
   - Métdos Moleculares
 
+lightbox: true
 format:
     html:
+        number-sections: true
+        theme: flatly
+        code-fold: true
+        code-summary: "Mostrar Código"
         toc: true
         toc_float: true
         self-contained: true
+        other-links:
+        - text: Website
+          href: https://gabrielvpina.github.io/myBlog/
+
+lang: pt
 ---
 
 # Conceitos chave
@@ -122,4 +132,11 @@ Os genes `A1` e `A2` são Ortólogos, e ao mesmo tempo também são Homólogos.
 
 A escolha dos genes para a execução de uma filogenia é uma etapa fundamental para entender as relações basais na árvore filogenética final. Existem os chamados métodos de "concatenação", onde diferentes genes são concatenados para formar uma única sequência utilizada para a filogenia final.
 
-Os genes escolhidos para concatenação devem ser cuidadosamente escolhidos, pois devem possuir uma taxa de variação similar e serem bem representativos para o táxon analisado. Sequências muito conservadas podem silenciar a real variação dos genes mais distintos. 
+Os genes escolhidos para concatenação devem ser cuidadosamente escolhidos, pois devem possuir uma taxa de variação similar e serem bem representativos para o táxon analisado. Sequências muito conservadas podem silenciar a real variação dos genes mais distintos.
+
+# Dicotomia e Politomia
+
+Uma relação **dicotômica** diz respeito sobre como um nó de uma árvore filogenética se divide em dois ramos, delimitando um ancestral comum direto dos nós subsequentes. Uma relação **politômica** descreve eventos de derivação múltipla em um mesmo nó de uma árvore filogenética.
+
+![Dicotomia e Politomia](figures/dic_poly.png)
+
