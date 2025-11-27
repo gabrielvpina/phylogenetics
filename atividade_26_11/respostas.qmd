@@ -49,16 +49,38 @@ Em uma árvore não-enraizada, por exemplo, o nó *C* poderia derivar os 3 nós 
 
 ## Questão 03) Diferenciar grupos *monofiléticos*, *parafiléticos* e *polifiléticos*.
 
+Grupos monofiléticos, como o próprio nome sugere, possuem o mesmo ancestral comum em uma árvore filogenética. São os agrupamentos de OTUs que possuem um ancestral comum exclusivo juntamente com todos os seus descendentes.
+
+Parafilia é o fenômeno onde grupos com a mesma origem ancestral são excluídos da árvore por terem um conjunto de descendentes distinto.
+
+Grupos polifiléticos compartilham dois ou mais grupos monofiléticos em sua constituição. 
+
 ## Questão 04) Qual a relação conceitual entre *Grupo Externo*, *Plesiomorfias* e *Apomorfias*?
+
+Um grupo externo é um conjunto de OTUs que pode ser utilizado como referência para enraizar uma árvore filogenética. 
+
+Plesiomorfias e Apomorfias só podem ser analisadas de forma correta com o uso do adequado de grupos externos, permitindo o correto contraste entre as OTUs analisadas, permitindo a melhor análise entre Plesiomorfias e Apomorfias. Caso um grupo externo seja muito próximo dos objetos em análise, ele pode ser lido como uma plesiomorfia juntamente com o grupo ancestral.
+
+A comparação com o grupo externo que dá sentido de tempo na análise de um grupo.
 
 ## Questão 05) Por quê Grupos Externos não podem ser testados como tal na mesma análise filogenética?
 
+A escolha de um grupo externo deve ser feita a partir de testes anteriores, para garantir que indiquem que são OTUs próximas, mas que divergiram necessariamente antes do processo de diferenciação das OTUs do próprio grupo interno.
+
 ## Questão 06) Qual o critério para selecionar uma árvore de máxima parcimônia?
+
+São necessários sítios informativos entre as amostras. Ou seja, é possível dividir as amostras em pelo menos dois grupos a partir das informações dos sítios informativos.
 
 ## Questão 07) Qual a regra básica para que um sitio com variação seja informativo para máxima Parcimônia.
 
+É necessário que o sítio de variação divida as amostras em pelo menos dois grupos, com no mínimo dois representantes para cada grupo.
+
 ## Questão 08) Por quê foi chamada atenção que a árvore mais curta não é uma proibição à natureza?
 
+Não necessariamente o processo evolutivo vai convergir sempre para a seleção de mudanças mais curtas ou de menos complexidade. A escolha de seleção do algoritimo não reflete processos biológicos reais, que por seleção, podem ocorrer de forma imprevisível e aleatória.
+
 ## Questão 09) O que está por trás do princípio que transições são mais frequentes que transversões? E por que alguns autores sugerem dar peso zero as transições?
+
+Mutações 
 
 ## Questão 10) Por que em sequências codificadoras de proteínas a terceira base dos códons apresenta menores restrições evolutivas?
