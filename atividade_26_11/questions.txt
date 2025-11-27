@@ -1,0 +1,26 @@
+Capitulo 12
+Introdução a Máxima Parcimonia
+1 - O que representam as politomias na topologia de uma arvore filogenética?
+
+2 - Por que o número de arvores enraizadas dicotômicas é tão maior que o de arvores
+enraizadas possíveis?
+
+3 - Diferenciar grupos Monofiléticos, parafiléticos e polifiléticos
+
+4 - Qual a relação conceitual entre Grupo Externo, Plesiomorfias e Apomorfias?
+
+5 - Por quê Grupos Externos não podem ser testados como tal na mesma análise
+filogenética?
+
+6 - Qual o critério para selecionar uma árvore de máxima parcimônia?
+
+8 - Qual a regra básica para que um sitio com variação seja informativo para máxima
+Parcimônia
+
+9 - Por quê foi chamada atenção que a árvore mais curta não é uma proibição à natureza?
+
+10 - O que está por trás do princípio que transições são mais frequentes que transversões? E
+por que alguns autores sugerem dar peso zero as transições?
+
+11 - Por que em sequências codificadoras de proteínas a terceira base dos códons apresenta
+menores restrições evolutivas?

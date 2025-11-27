@@ -1,0 +1,62 @@
+---
+title: Atividade - Introdução à Máxima Parcimônia
+
+date: "last-modified"
+date-format: "long"
+
+license: "CC BY-SA 4.0"
+
+author:
+  - name: Gabriel Rodrigues
+    degrees:
+      - MSc
+    id: gr
+    orcid: 0009-0005-2294-2845
+    email: gvpina.rodrigues@gmail.com
+    affiliation:
+      - name: Universidade Estadual de Santa Cruz
+        city: Ilhéus
+        state: Bahia
+        url: www.uesc.br
+
+format:
+  pdf:
+    pdf-engine: xelatex
+    sansfont: "LibreCaslonText"
+    sansfontoptions:
+      - Path = ./LibreCaslonText/
+      - Extension = .ttf
+      - UprightFont = *-Regular
+      - BoldFont = *-Bold
+      - ItalicFont = *-Italic
+---
+
+# Perguntas
+
+## Questão 01) O que representam as politomias na topologia de uma árvore filogenética?
+
+Uma politomia representa uma região de uma árvore filogenética onde a relação dos grupos não pôde ser resolvida em uma *dicotomia*. Em termos práticos, é um nó que diverge em 3 ou mais ramos em uma árvore filogenética.
+
+A interpretação de uma politomia envolve a revisão dos dados inseridos na árvore, pois esse tipo de conformação pode representar a falta de informação suficiente para determinar a ordem de ramificação.
+
+## Questão 02) Por quê o número de árvores enraizadas dicotômicas é tão maior que o de árvores não-enraizadas possíveis?
+
+Geralmente é devido à baixa complexidade das árvores não-enraizadas quando comparadas às enraizadas.
+
+Uma árvore dicotômica adiciona camadas de complexidado ao conferir a dimensão de tempo e sentido entre os nós da árvore. 
+
+## Questão 03) Diferenciar grupos *monofiléticos*, *parafiléticos* e *polifiléticos*.
+
+## Questão 04) Qual a relação conceitual entre *Grupo Externo*, *Plesiomorfias* e *Apomorfias*?
+
+## Questão 05) Por quê Grupos Externos não podem ser testados como tal na mesma análise filogenética?
+
+## Questão 06) Qual o critério para selecionar uma árvore de máxima parcimônia?
+
+## Questão 07) Qual a regra básica para que um sitio com variação seja informativo para máxima Parcimônia.
+
+## Questão 08) Por quê foi chamada atenção que a árvore mais curta não é uma proibição à natureza?
+
+## Questão 09) O que está por trás do princípio que transições são mais frequentes que transversões? E por que alguns autores sugerem dar peso zero as transições?
+
+## Questão 10) Por que em sequências codificadoras de proteínas a terceira base dos códons apresenta menores restrições evolutivas?
