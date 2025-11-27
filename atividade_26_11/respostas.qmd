@@ -43,7 +43,9 @@ A interpretação de uma politomia envolve a revisão dos dados inseridos na ár
 
 Geralmente é devido à baixa complexidade das árvores não-enraizadas quando comparadas às enraizadas.
 
-Uma árvore dicotômica adiciona camadas de complexidado ao conferir a dimensão de tempo e sentido entre os nós da árvore. Quando o nó *A* é ligado ao *B* e ao *C*, sendo assim por diante até o *F*, teríamos um total de 6 nós que poderiam trocar de posição em uma árvore.
+Uma árvore dicotômica adiciona camadas de complexidado ao conferir a dimensão de tempo e sentido entre os nós da árvore, de forma que os elementos se configurem em forma ordinal (em uma ordem sequencial). Quando o nó *A* é ligado ao *B* e ao *C*, sendo assim por diante até o *F*, temos o total de **6 nós** que poderiam trocar de posição em uma árvore de forma ordinal.
+
+Em uma árvore não-enraizada, por exemplo, o nó *C* poderia derivar os 3 nós restantes (D, E e F). Diminuindo o fator ordinal dos objetos da árvore, e consequentemente diminuindo as possibilidades de diferentes configurações de árovores filogenéticas.
 
 ## Questão 03) Diferenciar grupos *monofiléticos*, *parafiléticos* e *polifiléticos*.
 
