@@ -81,10 +81,12 @@ Não necessariamente o processo evolutivo vai convergir sempre para a seleção 
 
 ## Questão 09) O que está por trás do princípio que transições são mais frequentes que transversões? E por que alguns autores sugerem dar peso zero as transições?
 
-Transições podem ocorrer mútiplas vezes no mesmo sítio e muitas das vezes retornar a mudança ao seu estado original. Sua troca é dinâmica e muito variável.
+Transições podem ocorrer mútiplas vezes no mesmo sítio e muitas das vezes retornar a mudança ao seu estado original. Sua troca é dinâmica e muito variável, por isso a sugestão de alguns autores sobre seu peso zero na análise.
 
 Transversões ocorrem mais raramente por serem rapidamente corrigidas pelos sistemas de reparo dos organismos, fazendo com que uma transversão em uma sequência tenha um peso considerável para o contexto da alteração.
 
 ## Questão 10) Por que em sequências codificadoras de proteínas a terceira base dos códons apresenta menores restrições evolutivas?
 
 O código genético é degenerado, o que significa dizer que em regiões codificantes múltiplos códons podem ser traduzidos para o mesmo aminoácido. Isso ocorre principalmente na base da terceira posição do códon, onde a mesma pode ser substituída e ainda manter a informação da codificação de um determinado resíduo de aminoácido.
+
+Caso ocorra alguma alteração nesse tipo de região, não necessariamente conduziria o produto final para uma mudança drástica ou um novo fenótipo, o que reduziria o efeito de seleção sobre esse tipo de polimorfismo da sequência.
