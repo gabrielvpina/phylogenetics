@@ -1,0 +1,75 @@
+---
+title: Atividade Final - Filogenia
+
+date: "last-modified"
+date-format: "long"
+
+
+license: "CC BY-SA 4.0"
+
+
+author:
+  - name: Gabriel Rodrigues
+    degrees:
+      - MSc
+    id: gr
+    orcid: 0009-0005-2294-2845
+    email: gvpina.rodrigues@gmail.com
+    affiliation:
+      - name: Universidade Estadual de Santa Cruz
+        city: Ilhéus
+        state: Bahia
+        url: www.uesc.br
+
+abstract: 
+  Atividade avaliativa realizada com a finalidade de aplicar todos os conceitos teóricos e práticos aprendidos em sala de aule e durante os estudos dirigidos. Essa atividade se propõe a fazer uma análise filogenética de 43 sequências do gene ribossomal mitochondrial 16S de abelhas sem ferrão (tribo Meliponini). 
+        
+       
+
+format:
+  pdf:
+    pdf-engine: xelatex
+    # -------------------------------------
+    # Fonte do Corpo do Texto (mainfont)
+    # -------------------------------------
+    mainfont: "CrimsonText"
+    mainfontoptions:
+      - Path = ./fonts/CrimsonText/
+      - Extension = .ttf
+      - UprightFont = *-Regular
+      - BoldFont = *-Bold
+      - ItalicFont = *-Italic
+      
+    # -------------------------------------
+    # Fonte dos Títulos (sansfont)
+    # -------------------------------------
+    sansfont: "CrimsonText" 
+    sansfontoptions:
+      - Path = ./fonts/CrimsonText/
+      - Extension = .ttf
+      - UprightFont = *-Regular
+      - BoldFont = *-Bold
+      - ItalicFont = *-Italic
+---
+
+# Introdução
+
+O uso de métodos moleculares é essencial para contar a história dos eventos evolutivos que ocorreram com um táxon em determinado tempo. As evidências necessárias para descrever o precesso devem ser coletadas com critérios rígidos, para não gerar dados ruidosos em uma reconstrução filogenética.
+
+Métodos filogenéticos são baseados em inferências, já que não é possível reconstruir os elementos já perdidos na natureza. Na maioria dos trabalhos, as amostras serão parciais. Fatores como a diversidade interna do gênero/família são chave para determinar a completude da filogenia molecular.
+
+## Escolha do Caractere
+
+Um caractere, seja molecular ou morfológico, deve ter uma variação intrísceca entre as amostras (táxons estudados), porém sem ser muito divergente ao ponto de não poder ser utilizado como um caractere conservado entre as amostras.
+
+Alguns dos caracteres escolhidos vão estar ausentes, no caso de amostras moleculares pode ser o caso de uma base nitrogenada não sequenciada ou com baixa qualidade.
+
+# Curadoria das Sequências
+
+# Alinhamento Múltiplo de Sequências (MSA)
+
+# Modelo de Substituição Nucleotídica
+
+# Inferência Filogenética
+
+# Visualização e Edição da Árvore
