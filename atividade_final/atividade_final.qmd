@@ -55,6 +55,8 @@ O uso de métodos moleculares é essencial para contar a história dos eventos e
 
 Métodos filogenéticos são baseados em inferências, já que não é possível reconstruir os elementos já perdidos na natureza. Na maioria dos trabalhos, as amostras serão parciais. Fatores como a diversidade interna do gênero/família são chave para determinar a completude da filogenia molecular.
 
+Para esse trabalho em particular, iremos usar o arquivo `seqs.fasta`, que possui 43 sequências do gene ribossomal mitochondrial 16S de abelhas sem ferrão (tribo Meliponini).
+
 ## Escolha do Caractere
 
 Um caractere, seja molecular ou morfológico, deve ter uma variação intrísceca entre as amostras (táxons estudados), porém sem ser muito divergente ao ponto de não poder ser utilizado como um caractere conservado entre as amostras.
@@ -63,7 +65,7 @@ Alguns dos caracteres escolhidos vão estar ausentes, no caso de amostras molecu
 
 ## Objeto da Análise
 
-
+A subunidade 16S do RNA Ribossomal é eficaz para resconstruir relações evolutivas se deve à propriedades como distribuição universal, função conservada, taxa de evolução lenta e contém regiões variáveis em sua composição.
 
 # Curadoria das Sequências
 
@@ -83,9 +85,23 @@ TTGTATATTTGTATAATGAAATCTGGAATGAAAGGATTAATGAAATAT
 
 # Alinhamento Múltiplo de Sequências (MSA)
 
-MAFFT (Multiple Alignment with Fast Fourier Transform, em inglês) é um programa de alinhamento múltiplo de sequências. O programa MAFFT implementa transformada rápida de Fourier para otimizar os alinhamentos de proteínas com base nas propriedades físicas dos aminoácidos. O programa usa o alinhamento progressivo e iterativo. As sequências nucleotídicas e de aminoácidos no formato FASTA podem ser alinhadas. MAFFT é útil para as sequências mais difíceis de se alinhar com outros programas, tais como aquelas que contêm grandes lacunas, (ex: rRNA que contêm as regiões variáveis de laços).
+MAFFT (Multiple Alignment with Fast Fourier Transform, em inglês) é um programa de alinhamento múltiplo de sequências. O programa MAFFT implementa transformada rápida de Fourier para otimizar os alinhamentos de proteínas com base nas propriedades físicas dos aminoácidos [@10.1093/nar/gkf436]. O programa usa o alinhamento progressivo e iterativo. As sequências nucleotídicas e de aminoácidos no formato FASTA podem ser alinhadas. MAFFT é útil para as sequências mais difíceis de se alinhar com outros programas, tais como aquelas que contêm grandes lacunas, (ex: rRNA que contêm as regiões variáveis de laços).
+
+O MAFFT foi instalado no sistema operacional ArchLinux via ambiente conda, através do comando:
+
+```r
+conda install -c bioconda mafft
+```
+
+A partir da sua instalação, podemos executar o alinhamento com o MAFFT a partir do seguindo comando:
+
+```r
+mafft --maxiterate 1000 --localpair seqs.fasta > alinhamento.fasta
+```
 
 # Modelo de Substituição Nucleotídica
+
+IQ-TREE 
 
 Modelo do IQ-TREE:
 ModelFinder computes the log-likelihoods of an initial parsimony tree for many different models and the Akaike information criterion (AIC) corrected Akaike information criterion (AICc), and the Bayesian information criterion (BIC). Then ModelFinder chooses the model that minimizes the BIC score (you can also change to AIC or AICc by adding the option -AIC or -AICc, respectively).
