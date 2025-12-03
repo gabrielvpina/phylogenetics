@@ -87,6 +87,11 @@ MAFFT (Multiple Alignment with Fast Fourier Transform, em inglês) é um program
 
 # Modelo de Substituição Nucleotídica
 
+Modelo do IQ-TREE:
+ModelFinder computes the log-likelihoods of an initial parsimony tree for many different models and the Akaike information criterion (AIC) corrected Akaike information criterion (AICc), and the Bayesian information criterion (BIC). Then ModelFinder chooses the model that minimizes the BIC score (you can also change to AIC or AICc by adding the option -AIC or -AICc, respectively).
+
+Checar a descrição dos outros modelos depois.
+
 # Inferência Filogenética
 
 # Visualização e Edição da Árvore

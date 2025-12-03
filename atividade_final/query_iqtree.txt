@@ -1,0 +1,5 @@
+Grupos externos:
+Euglossa_imperialis,Eufriesia_caerulescens,Psithyrus_variabilis,Bombus_terrestris,Bombus_pennsylvanicus,Bombus_avinoviellus,Apis_mellifera,Apis_florea,Apis_dorsata,Apis_cerana
+
+Query IQ_TREE:
+iqtree -s mafft_res.fasta -m MFP -bb 1000 -o Euglossa_imperialis,Eufriesia_caerulescens,Psithyrus_variabilis,Bombus_terrestris,Bombus_pennsylvanicus,Bombus_avinoviellus,Apis_mellifera,Apis_florea,Apis_dorsata,Apis_cerana -nt AUTO
