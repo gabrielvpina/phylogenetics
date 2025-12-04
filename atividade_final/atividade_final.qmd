@@ -6,7 +6,7 @@ shorttitle: "Filogenia Molecular"
 shortauthors: Gabriel Rodrigues
 
 author:
-  - name: Gabriel Rodrigues
+  - name: Gabriel Victor Pina Rodrigues
     degrees:
       - MSc
     id: gr
@@ -28,7 +28,7 @@ keywords: [Filogenia, MSA, Bioinformática, Abelhas]
 # thanks: Love to everyone.
 
 ## Bibliography meta-information ##
-reference-section-title: Bibliography  # adjust name of reference section
+reference-section-title: Bibliografia  # adjust name of reference section
 bibliography: bibliography.bib
 # You an also use a local CSL file
 # csl: https://www.zotero.org/styles/american-journal-of-sociology
@@ -65,7 +65,7 @@ Alguns dos caracteres escolhidos vão estar ausentes, no caso de amostras molecu
 
 ## Objeto da Análise
 
-A subunidade 16S do RNA Ribossomal é eficaz para resconstruir relações evolutivas se deve à propriedades como distribuição universal, função conservada, taxa de evolução lenta e contém regiões variáveis em sua composição.
+A subunidade 16S do RNA Ribossomal é eficaz para resconstruir relações evolutivas devido à propriedades como distribuição universal, função conservada, taxa de evolução lenta e a presença de regiões variáveis em sua composição.
 
 # Curadoria das Sequências
 
@@ -81,6 +81,52 @@ Em arquivos FASTA, o *header* é indicado como sendo o elemento após o símbolo
 ```r
 >Lepidotrigona_ventralis
 TTGTATATTTGTATAATGAAATCTGGAATGAAAGGATTAATGAAATAT
+```
+## Propriedade das Sequêcias
+
+No caso das sequências analisadas, tem-se uma média de 424,46 nucleotídeos com um desvio padrão de 37,6 nucleotídeos. Apesar das diferenças em tamanho, não são observadas sequências *outliers* nesse quesito (@fig-length).
+
+```{r}
+#| warning: false
+#| echo: false
+#| fig-pos: "H"
+#| label: fig-length
+#| fig-cap: "Tamanho das sequências em nucleotídeos por espécie analisada."
+library(dplyr)
+library(ggplot2)
+library(viridis)
+library(ggtree)
+library(seqinr)
+library(hrbrthemes)
+library(phangorn)
+library(ape)
+library(knitr)
+fastaLen <- read.table("sequencias.tsv", sep="\t", header=T)
+## plot de tamanho das sequencias
+seqLen <- ggplot(fastaLen, aes(x=Nome_da_Sequencia, y=Tamanho)) +
+  geom_bar(stat = "identity", fill="steelblue") +
+  xlab("Espécie") +
+  ylab("Tamanho da Sequência (nt)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle=45, hjust=1, vjust=1))
+print(seqLen)
+```
+
+Sobre o conteúdo GC, houve bastante variação apresentada pelas sequências de forma total, com uma média de aproximadamente 19,2% de conteúdo GC. Porém o desvio padrão apresentado é de 1,92% (@fig-gc).
+
+```{r}
+#| warning: false
+#| echo: false
+#| fig-pos: "H"
+#| label: fig-gc
+#| fig-cap: "Conteúdo GC das sequências em porcentagem por espécie analisada."
+seqGC <- ggplot(fastaLen, aes(x=Nome_da_Sequencia, y=Conteudo_GC)) +
+  geom_bar(stat = "identity", fill="steelblue", width=0.8) +
+  xlab("Espécie") +
+  ylab("Conteúdo GC (%)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle=45, hjust=1, vjust=1))
+print(seqGC)
 ```
 
 # Alinhamento Múltiplo de Sequências (MSA)
@@ -98,6 +144,211 @@ A partir da sua instalação, podemos executar o alinhamento com o MAFFT a parti
 ```r
 mafft --maxiterate 1000 --localpair seqs.fasta > alinhamento.fasta
 ```
+O argumento `--maxiterate 1000` diz respeito ao número máximo de iterações (ciclos de refinamento) que o algoritmo deve tentar para otimizar o alinhamento. Ou seja, o MAFFT começa com um alinhamento rápido inicial e, em seguida, tenta melhorá-lo repetidamente. Definir um valor alto (como 1000) faz com que o algoritmo refine o alinhamento por mais tempo, levando a uma maior precisão em comparação com as opções rápidas
+
+A função `--localpair` indica uma instrução para usar a estratégia de alinhamento local par a par. Ela significa que o alinhamento usa informações de regiões locais altamente conservadas entre cada par de sequências, antes de construir a árvore-guia e o alinhamento múltiplo final.
+
+# Matriz de Distância dos Pares 
+
+Após o alinhamento de sequências de nucleotídeos ou aminoácidos, o passo subsequente em diversas abordagens filogenéticas envolve o cálculo das distâncias pareadas. Esta métrica quantifica o grau de divergência acumulada entre duas sequências ao longo do tempo evolutivo, oferecendo uma medida fundamental para elucidar as relações evolutivas entre elas. Tais distâncias são a base de métodos de construção de árvores, como UPGMA (Unweighted Pair Group Method with Arithmetic mean) e Neighbor-Joining.
+
+A escolha do modelo de distância é crucial, pois cada um oferece uma perspectiva estatística distinta sobre a divergência. Inicialmente, distâncias mais simples como a distância de Hamming (que conta as diferenças brutas) e a p-distância (que normaliza essas diferenças brutas) podem ser utilizadas. No entanto, modelos mais sofisticados de substituição de nucleotídeos são tipicamente empregados para corrigir o problema de múltiplas substituições em um único sítio (que a p-distância não contabiliza).
+
+## Modelos de Substituição de Nucleotídeos
+
+Os modelos de distância assumem diferentes taxas e processos de substituição, com a complexidade aumentando à medida que mais parâmetros são incorporados. O modelo mais simples é o de Jukes-Cantor (JC69), que postula uma taxa de substituição igual entre quaisquer dois nucleotídeos e assume frequências iguais para as quatro bases (A, T, C, G). Pode-se observar visuamente a matriz JC69 a partir da @fig-jc69.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-height: 5
+#| fig-width: 5
+#| label: fig-jc69
+#| fig-cap: "Matriz de distância baseada no método de Jukes-Cantor (JC69). Quanto mais claro, mais semelhante."
+library(seqinr)
+library(hrbrthemes)
+library(phangorn)
+library(ape)
+library(knitr)
+library("ggplot2")
+library("gridExtra") 
+# importar alinhamento do MAFFT
+my_align <- read.alignment(file = "mafft_result/mafft_res.fasta", format = "fasta")
+# converter para objeto PhyDat
+my_align = as.phyDat(my_align)
+
+D_JK69 = dist.dna(as.DNAbin(my_align), model = "JC69")
+# Convert the distance matrix to a matrix and round the values
+D_JK69 = round(as.matrix(D_JK69),2)
+#plot
+heatmap(D_JK69, Colv = NA, Rowv = NA, scale = "column", 
+        cexRow = 0.65, 
+        cexCol = 0.65)
+
+```
+
+Modelos subsequentes introduzem maior realismo biológico. O modelo de Kimura de 2 Parâmetros (K80), por exemplo, relaxa a premissa do JC69 ao distinguir as taxas entre transições (substituições entre bases do mesmo tipo, como A $\leftrightarrow$ G ou C $\leftrightarrow$ T) e transversões (substituições entre bases de tipos diferentes, como A $\leftrightarrow$ C ou G $\leftrightarrow$ T), mas ainda assume frequências iguais das bases (@fig-k80).
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-height: 5
+#| fig-width: 5
+#| label: fig-k80
+#| fig-cap: "Matriz de distância baseada no modelo de Kimura de 2 Parâmetros (K80). Quanto mais claro, mais semelhante."
+
+# Calculate the distance matrix with the K80 model and store it in 'D_K80'
+D_K80 = dist.dna(as.DNAbin(my_align), model = "K80")
+
+# Convert the distance matrix to a matrix and round the values to two decimal places
+D_K80 = round(as.matrix(D_K80), 2)
+
+# Replace any NA (Not Available) values in the matrix with 0
+D_K80[which(is.na(D_K80))] = 0
+
+# cores heatmap
+library(RColorBrewer)
+cores_seq <- brewer.pal(5, "Greens")
+cores_heatmap <- colorRampPalette(cores_seq)(50)
+# plot
+heatmap(D_K80, Colv = NA, Rowv = NA, scale = "column", 
+        cexRow = 0.65, 
+        cexCol = 0.65,
+        col = cores_heatmap)
+```
+
+# Neighbor Joining (NJ)
+
+O Neighbor-Joining (NJ) constitui um método de inferência filogenética classificado como baseado em distâncias. Sua aplicação ocorre após o cálculo das distâncias pareadas entre todas as sequências em um conjunto de dados [@10.1038/nrg3186].
+
+Para fazer a seguinte árvore, foi utilizado o pacote **phangorn** no R. Para a eexecução foi necessário importar o alinhamento realizado no MAFFT, o resultado pode ser observado na @fig-treeNJ.
+
+```r
+# Calcular a matriz de distância de Hamming com os dados filogenéticos
+D_hamming = dist.hamming(phyDat_msa_sample)
+
+# Processar a árvore de Neighbor Joining
+nj_tree = nj(D_hamming)
+nj_tree$edge.length[which(nj_tree$edge.length<0)]=0
+nj_tree = midpoint(multi2di(nj_tree))
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-height: 9
+#| fig-width: 6
+#| label: fig-treeNJ
+#| fig-cap: "Árvore filogenética feita a partir do método de Neighbor-Joining (NJ)"
+library(ggtree)
+
+#====================================
+plot_tree = function(tree_plot, title_plot, max_x) {
+  g = ggtree(tree_plot, color = "#2f3333", size = 0.4)
+  
+  # Customize the appearance of the plot and tip labels
+  g = g + geom_tiplab(size = 4, color = "black", align = TRUE) +
+    #geom_nodepoint(size = 1, color = "#c7254e") +
+    labs(title = title_plot, size = 6) +
+    xlim(0, max_x) +
+    theme(
+      # Remove axis lines and text
+      axis.line = element_blank(),
+      axis.text = element_blank(),
+      # Remove all grids
+      panel.grid.major = element_blank(),
+      panel.grid.minor = element_blank(),
+      # Adjust margins and legend position
+      plot.margin = margin(t = 0, r = -5, b = 0, l = 0, unit = "pt"),
+      legend.position = 'top'
+    )
+  
+  # Add labels for branch lengths with a smaller font size
+  g = g + geom_text(aes(x = branch, label = round(branch, 2)), 
+  size = 3, color = "black", vjust = -0.5, hjust = 0)
+  
+  return(g)
+}
+#====================================
+
+# matrix de distancia Hamming
+D_hamming = dist.hamming(my_align)
+
+# Compute the Neighbor Joining tree
+nj_tree = nj(D_hamming)
+nj_tree$edge.length[which(nj_tree$edge.length<0)]=0
+nj_tree = midpoint(multi2di(nj_tree))
+# enraizando árvore
+rooted_nj_tree <- root(nj_tree, c("Euglossa_imperialis",
+"Eufriesia_caerulescens","Psithyrus_variabilis",
+"Bombus_terrestris","Bombus_pennsylvanicus",
+"Bombus_avinoviellus","Apis_mellifera","Apis_florea",
+"Apis_dorsata","Apis_cerana"))
+
+g_NJ = plot_tree(rooted_nj_tree,"Neighbor Joining (NJ)",0.2)
+g_NJ
+```
+
+# Máxima Parcimônia (MP)
+
+A Máxima Parcimônia (MP) é um método de inferência filogenética classificado como baseado em caracteres (character-based). Em contraste com os métodos baseados em distâncias (como o Neighbor-Joining), a parcimônia utiliza diretamente as características observadas nas sequências (os nucleotídeos ou aminoácidos) para avaliar as topologias de árvores [@10.1038/nrg3186].
+
+O objetivo fundamental da Máxima Parcimônia é identificar a topologia de árvore que requer o menor número total de eventos evolutivos (substituições, inserções ou deleções) para explicar os dados observados. Em essência, o método busca a árvore que é a mais simples e mais "parcimoniosa" possível. A premissa subjacente é a de que a rota evolutiva mais provável é aquela que minimiza a ocorrência de eventos evolutivos independentes.
+
+A árvore final com o resultado desse método nos dados pode ser observada na @fig-treeMP.
+
+```{r}
+#| echo: false
+#| warning: false
+#| fig-height: 9
+#| fig-width: 6
+#| label: fig-treeMP
+#| fig-cap: "Árvore filogenética feita a partir do método de Máxima Parcimônia (MP)."
+
+suppressWarnings({
+  suppressMessages({
+    options(verbose = FALSE)
+    
+    # Distance Calculation
+    # Compute the Hamming distance matrix for the given aligned sequences
+    # This will serve as a measure of pairwise sequence dissimilarity
+    D_hamming = dist.hamming(my_align)
+
+    # Base Tree Construction
+    # Compute the Neighbor Joining (NJ) tree as a base tree
+    # NJ is a distance-based method for constructing phylogenetic trees
+    nj_tree = nj(D_hamming)
+
+    # Correct Negative Branch Lengths
+    # Negative branch lengths are not biologically meaningful,
+    # hence set any negative branch lengths to 0
+    nj_tree$edge.length[which(nj_tree$edge.length < 0)] = 0
+
+    # Rooting the Tree
+    # Root the NJ tree at its midpoint to ensure ultrametricity,
+    # and convert any multifurcating nodes to bifurcating nodes
+    nj_tree = midpoint(multi2di(nj_tree))
+
+    # Parsimony Optimization
+    # Optimize the parsimony of the NJ tree
+    # The optim.parsimony function refines the tree topology to minimize the parsimony score
+    par_tree = optim.parsimony(nj_tree, my_align)
+
+    
+    #Edge estimation
+    par_tree=acctran(par_tree, my_align)
+    par_tree=midpoint(par_tree)
+    
+    # Calculating and Printing Parsimony
+    # Calculate and print the parsimony score of the optimized tree
+    # Lower parsimony scores indicate more parsimonious (simpler) trees
+    # print(paste("Parsimony Score for the optimized tree:", parsimony(par_tree, my_align)))
+  })
+})
+
+tree_MP <- plot_tree(par_tree, "Maximum parsimony (MP)",180)
+tree_MP
+```
 
 # Modelo de Substituição Nucleotídica
 
@@ -105,9 +356,3 @@ IQ-TREE
 
 Modelo do IQ-TREE:
 ModelFinder computes the log-likelihoods of an initial parsimony tree for many different models and the Akaike information criterion (AIC) corrected Akaike information criterion (AICc), and the Bayesian information criterion (BIC). Then ModelFinder chooses the model that minimizes the BIC score (you can also change to AIC or AICc by adding the option -AIC or -AICc, respectively).
-
-Checar a descrição dos outros modelos depois.
-
-# Inferência Filogenética
-
-# Visualização e Edição da Árvore
